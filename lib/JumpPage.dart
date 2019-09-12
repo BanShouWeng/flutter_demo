@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'CountPage.dart';
+
 class JumpPage extends StatefulWidget {
   JumpPage({Key key, this.title}) : super(key: key);
 
@@ -18,71 +20,45 @@ class JumpPage extends StatefulWidget {
 }
 
 class JumpState extends State<JumpPage> {
-  int _counter = 0;
-  double _textSize = 12;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-      _textSize++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter--;
-      _textSize--;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    void _jump() {
+      Navigator.push(
+          context,
+          new MaterialPageRoute(
+              builder: (context) => new CountPage(
+                    title: 1,
+                  )));
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Stack(
-          fit: StackFit.loose,
-          alignment: const Alignment(0, 0),
-          children: <Widget>[
-            new Container(
-              height: 200,
-              decoration: new BoxDecoration(
-                  gradient: const LinearGradient(colors: [
-                    Colors.purple,
-                    Colors.lightGreenAccent,
-                    Colors.cyanAccent
-                  ]),
-                  border: Border.all(width: 5, color: Colors.deepPurpleAccent)),
-            ),
-            new Text('I\'m a new one',
-                style: TextStyle(
-                    fontSize: 50, backgroundColor: Colors.deepPurpleAccent)),
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add_a_photo),
-      ),
-    );
+        body: Center(
+          child: Stack(
+            fit: StackFit.loose,
+            alignment: const Alignment(0, 0),
+            children: <Widget>[
+              new Container(
+                height: 200,
+                decoration: new BoxDecoration(
+                    gradient: const LinearGradient(colors: [
+                      Colors.purple,
+                      Colors.lightGreenAccent,
+                      Colors.cyanAccent
+                    ]),
+                    border:
+                        Border.all(width: 5, color: Colors.deepPurpleAccent)),
+              ),
+              new Text('I\'m a new one',
+                  style: TextStyle(
+                      fontSize: 50, backgroundColor: Colors.deepPurpleAccent)),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: _jump,
+          tooltip: 'Increment',
+        ));
   }
 }
